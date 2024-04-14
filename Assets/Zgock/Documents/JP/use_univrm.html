@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>手順書</title>
+    <style>
+        body {
+            line-height: 1.5;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            margin-bottom: 10px;
+        }
+        
+        ol {
+            margin-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>UniVRMでVRMをHumanoidとして扱う</h1>
+    
+    <h2>はじめに</h2>
+    <p>現在、Project内のAssets/Zgock/Models/Girl2 にサンプルのGirl2.vrmが入っています。</p>
+    <p>VRMコンソーシアム標準のUniVRMライブラリを導入してVRMファイルをfbx等と同様にhumanoid rigと使えるようにしていきます</p>
+    
+    <h2>UniVRMのインストール</h2>
+    <p>UniVRMは<a href="https://github.com/vrm-c">VRMコンソーシアム</a>が開発しているUnityでVRMモデルを扱うためのライブラリで、MITライセンスにて配布されています</p>
+    <p>VRM規格にはVRM0.x系と1.x系があり、枯れていて安定しているのは0.x系なのですが、URPを標準で扱えるのは1.x系なので今回は1.xを使用します</p>
+    <ol>
+        <li>UniVRMのダウンロード</li>
+        <p><a href="https://github.com/vrm-c/UniVRM/releases">UniVRMのリリースページ<a>から最新のUniVRMパッケージをダウンロードします</p>
+        <p>UniVRMはVRM-***で始まる方がVRM1.x用、UniVRM-***で始まる方がVRM0.x用なので間違えないようにしてください</p>
+        <p>今回は<a href="">VRM-0.121.0_640f.unitypackage</a>をダウンロードして、適当なフォルダに保存してください</p>
+        <li>UniVRMのインストール</li>
+        <p>Unityのprojectウィンドウ内を右クリック、import package>custom packageを選んでダウンロードしたunitypackageをインストールしてください</p>
+        <p><img src="images/Screenshot_16.png"></p>
+        <p><img src="images/Screenshot_17.png"></p>
+        <p>import内容の確認ウィンドウが出たらImportを選んでください</p>
+        <p><img src="images/Screenshot_18.png"></p>
+        <p>インストールが完了後、projectウィンドウ内に以下の３つのフォルダが作成されていれば大丈夫です</p>
+        <p><img src="images/Screenshot_19.png"></p>
+    </ol>
+    <h2>VRMのセットアップ</h2>
+    <p>プロジェクト添付のGirl2.vrmをUnityのURP環境で使えるようにセットアップします</p>
+    <ol>
+        <li>VRMバージョンの変更</li>
+        <p>Assets/Zgock/Models/Girl2/VRM/Girl2.vrmを選択してInspectorウィンドウを開き、Versionを1.0に変更します</p>
+        <p>「Migrate To Vrm 1」にチェックを入れて「Apply」を押してください</p>
+        <p><img src="images/Screenshot_21.png"></p>
+        <li>マテリアルの変換（URPで使う場合）</li>
+        <p>これでGirl2.vrmをhumanoidとして扱えるようになりましたが、デフォルトではSRP用のマテリアルが適用されているため、プレビューを見ても「いつものピンク色」になっています</p>
+        <p><img src="images/Screenshot_22.png"></p>
+        <p>そのため、URPで扱う場合はマテリアルをURP用に変更する必要がありますので、以下の手順で変更します</p>
+        <h3>マテリアル抽出</h3>
+        <p>まず、Materialsタブを選択して、「extract Materials and Textures」をクリックしてください</p>
+        <p><img src="images/Screenshot_23.png"></p>
+        <p>Girl2.vrmのあるフォルダの下に、MaterialsとTexturesのフォルダが展開されます</p>
+        <p><img src="images/Screenshot_24.png"></p>
+        <h3>シェーダーの変更</h3>
+        <p>Materialsフォルダ内のマテリアルを全て選択して、Inspectorウィンドウを開いてください</p>
+        <p><img src="images/Screenshot_25.png"></p>
+        <p>Shaderを「VRM10/MToon10」から「VRM10/Universal Render Pipeline/MToon10」に変更してください</p>
+        <p><img src="images/Screenshot_26.png"></p>
+        <p>これでピンク状態は解消されましたが、目の部分の描画がまだおかしいです</p>
+        <p><img src="images/Screenshot_27.png"></p>
+        <p>これはUniVRM1.xの既知の不具合で、シェーダーを変更しただけでは描画順パラメータが正しく設定されないというバグがあるためです</p>
+        <p>次の手順でこれを修正していきます</p>
+        <li>描画順の調整(UniVRMのバグ対策)</li>
+        <p>Materialsフォルダ内にあるマテリアルのうち、RenderQueue Offsetが0以外(-なにがし)になっているものを選択してください</p>
+        <p><img src="images/Screenshot_28.png"></p>
+        <p>Inspectorウィンドウ内のRenderQueue Offsetを「-2」であれば「0-2」というように頭に0を加えて変更してください</p>
+        <p><img src="images/Screenshot_29.png"></p>
+        <p>Girl2.vrmであればEyeHighlight、EyeIris、FaceBrow、Eyelineが対象になるはずです</p>
+        <p>これで目の部分の描画が正しくなりました</p>
+        <p><img src="images/Screenshot_30.png"></p>
+    </ol>
+    <h2>おまけ</h2>
+    <p>Assets/Zgock/Models/Girl2/ExtraにこのVRMをVRoid Studioで編集可能な.vroid形式のファイルを入れてありますので、自分の好みに弄りたい方は自由に弄ってください</p>
+    <p>Girl2.vrmおよびGirl2.vroidについてはCC-BYライセンスとさせていただきます。</p>
+    
+    <!-- 以下、必要な手順を追加 -->
+    
+</body>
+</html>
