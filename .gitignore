@@ -71,3 +71,11 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# UniVRM package Assets
+/[Aa]ssets/UniGLTF
+/[Aa]ssets/UniGLTF.meta
+/[Aa]ssets/VRM10
+/[Aa]ssets/VRM10.meta
+/[Aa]ssets/VRMShaders
+/[Aa]ssets/VRMShaders.meta
