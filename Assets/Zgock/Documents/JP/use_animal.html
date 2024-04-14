@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>手順書</title>
+    <style>
+        body {
+            line-height: 1.5;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            margin-bottom: 10px;
+        }
+        
+        ol {
+            margin-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Animal Controllerのセットアップ</h1>
+    
+    <h2>はじめに</h2>
+        <p>現在、UniVRMとVRMモデルのセットアップが終わっているという前提になります</p>
+        <p>続いて、商用アセットのAnimal Controllerのセットアップを行います</p>
+    <h2>Animal Controllerとは</h2>
+        <p>Animal Controllerは<a href="https://assetstore.unity.com/packages/tools/animation/animal-controller-121871">Unity Asset Store</a>で販売されているアセットで、動物のアニメーションを簡単に扱えるようにするためのアセットです</p>
+        <p>しかしながら、バージョンアップに伴い、Humanoidにも対応するようになり、元々の設計がかなり綺麗で扱いやすいということもあって今回プレイヤーコントローラーとして採用しました</p>
+    <h2>Animal Controllerのインポート</h2>
+        <p>Asset StoreにてAnimal Controllerの購入が終わっているという前提で進めます</p>
+        <p>Menu>Windows>Package Managerを選び、Package Managerを開きます</p>
+        <p><img src="images/Screenshot_31.png"></p>
+        <p>左上の「My Assets」を選んだあと、animal controllerを検索し、（未ダウンロードであればdownloadの後に）importを行ってください</p>
+        <p>まず、「依存するパッケージをインストールするか？」と聞かれるはずなので「Install/Upgrade」を選んでください</p>
+        <p><img src="images/Screenshot_32.png"></p>
+        <p>次にimportする内容の一覧が出たら、「Import」を選んでください</p>
+        <p><img src="images/Screenshot_33.png"></p>
+        <p>インポートが終わったら、AssetのURP化を行います</p>
+    <h2>URP対応</h2>
+        <h3>マテリアルの変換</h3>
+            <p>Animal ControllerのマテリアルはStandard Shaderを使用しているため、URPに対応させる必要があります</p>
+            <p>Menu>Windows>Rendering>Render Pipeline Converterを選んでください</p>
+            <p><img src="images/Screenshot_34.png"></p>
+            <p>「Material Upgrade」にチェックを入れて、Initialize And Convertを行ってください</p>
+            <p><img src="images/Screenshot_36.png"></p>
+            <p>コンバート後にいくつかエラーが出ますが、この後解消するのでここは一度閉じてください</p>
+            <p><img src="images/Screenshot_37.png"></p>
+        <h3>URPシェーダーのインストール</h3>
+            <p>Animal Controllerの独自シェーダーをURP対応のものに入れ替えます</p>
+            <p>まずPackage Managerから現在使用しているURPのバージョンを確認します</p>
+            <p><img src="images/Screenshot_39.png"></p>
+            <p>Unity 2022.3であれば14.x.xのはずです</p>
+            <p>次に、Menu>Tools>Malbars Animation>Malbars [対応するバージョン] Shaderaを選びます</p>
+            <p><img src="images/Screenshot_40.png"></p>
+            <p>上記の例であればMalbars URP v.14 Shadersになります</p>
+            <p>パッケージのImport画面が出たら「Import」を選んでください</p>
+            <p><img src="images/Screenshot_41.png"></p>
+            <p>これでURP対応が完了しました</p>
+    <h2>動作確認</h2>
+        <p>Animal Controllerの動作確認を行います</p>
+        <p>まず、Animal Controllerのサンプルシーンを開いてください</p>
+        <p>再生ボタンを押して、動作確認を行ってください</p>
+        <p><img src="images/Screenshot_42.png"></p>
+        <p>マテリアルが正常に出ていて、きちんと遊べるようであれば、これでAnimal Controllerのセットアップは完了です</p>
+    <h2>おわりに</h2>
+        <p>Animal Controllerのセットアップが完了しました</p>
+        <p>次は、VRMを使用したプレイヤーコントローラーのセットアップを行います</p>
+        <p>以上で手順書は終了です</p>
+        <p>お疲れ様でした</p>
+    
+</body>
+</html>
