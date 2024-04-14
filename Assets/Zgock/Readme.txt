@@ -1,7 +1,8 @@
-この段階では空のURPプロジェクトです。これからアセットを追加して環境を整えていきます
-とりあえずサンプルのVRMを入れてあります。このVRMはVRoid Studioで雑につくったものなのでご自由に使ってください
+サンプルVRMはVRoid Studioで雑につくったものなのでご自由に使ってください
 一応CC-BYライセンスとしておきます
 
-まだUniVRMをimportしていないので、この段階ではUnityでVRMをhumanoidとして扱うことはできません
+サンプルVRMをHumanoidとしてセットアップ済みの状態です
+おそらくUniVRMの不具合で、Gitから持ってきたときにマテリアル情報の一部が飛ぶという不具合がありますので、
+UniVRMをインポートしただけだと表示がおかしい問題が起こることがあります
 
-Assets/Zgock/Documents/JP/use_univrm.htmlを参照してVRMのセットアップを行ってください
+その場合はUniVRMをimportした後、Assets/Zgock/Documents/JP/use_univrm.htmlの「シェーダーの変更」以降の手順を行ってください

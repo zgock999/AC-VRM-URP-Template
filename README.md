@@ -39,4 +39,4 @@ Animal Controller
 初動ドキュメントとサンプルモデルが入っただけの状態です。Documentsを参照しながらVRMのセットアップを行ってみてください
 
 ### VRM1
-サンプルモデルに対してHumanoid化とURP化まで終わった状態です。ReadmeにあるようUniVRMのimportだけ行えばサンプルモデルがHumanoidとして使える状態になっています
+サンプルモデルに対してHumanoid化とURP化まで終わった状態です。UniVRMの既知の不具合対策が必要なのでAssets/Zgock/Readme.txtにしたがってセットアップしてください
