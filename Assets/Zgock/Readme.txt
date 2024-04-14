@@ -1,8 +1,9 @@
 サンプルVRMはVRoid Studioで雑につくったものなのでご自由に使ってください
 一応CC-BYライセンスとしておきます
 
-サンプルVRMをHumanoidとしてセットアップ済みの状態です
-おそらくUniVRMの不具合で、Gitから持ってきたときにマテリアル情報の一部が飛ぶという不具合がありますので、
 UniVRMをインポートしただけだと表示がおかしい問題が起こることがあります
 
 その場合はUniVRMをimportした後、Assets/Zgock/Documents/JP/use_univrm.htmlの「シェーダーの変更」以降の手順を行ってください
+
+VRMをセットアップした後、Animal Controllerをimportする前の状態です。
+Assets/Zgock/Documents/JP/use_animal.htmlに従ってセットアップを行ってください
