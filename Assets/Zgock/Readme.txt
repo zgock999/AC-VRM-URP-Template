@@ -3,3 +3,5 @@
 一応CC-BYライセンスとしておきます
 
 まだUniVRMをimportしていないので、この段階ではUnityでVRMをhumanoidとして扱うことはできません
+
+Assets/Zgock/Documents/JP/use_univrm.htmlを参照してVRMのセットアップを行ってください
